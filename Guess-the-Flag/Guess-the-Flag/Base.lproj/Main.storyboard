@@ -18,6 +18,9 @@
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tcp-oq-ITA">
                                 <rect key="frame" x="84" y="247" width="224" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Tcp-oq-ITA" secondAttribute="height" multiplier="112:57" id="fx5-yX-PbE"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
                                 <connections>
@@ -26,6 +29,9 @@
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNm-Fl-1hf">
                                 <rect key="frame" x="84" y="391" width="224" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xNm-Fl-1hf" secondAttribute="height" multiplier="112:57" id="K0n-MF-jpV"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
                                 <connections>
@@ -34,6 +40,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVn-jq-KMi">
                                 <rect key="frame" x="84" y="103" width="224" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fVn-jq-KMi" secondAttribute="height" multiplier="112:57" id="yOp-eg-c9V"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
                                 <connections>
@@ -45,11 +54,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="xNm-Fl-1hf" firstAttribute="centerX" secondItem="Tcp-oq-ITA" secondAttribute="centerX" id="8cL-1N-t1P"/>
+                            <constraint firstItem="Tcp-oq-ITA" firstAttribute="height" secondItem="fVn-jq-KMi" secondAttribute="height" id="JJY-Cz-jUS"/>
                             <constraint firstItem="Tcp-oq-ITA" firstAttribute="centerX" secondItem="fVn-jq-KMi" secondAttribute="centerX" id="YCG-1D-NME"/>
                             <constraint firstItem="xNm-Fl-1hf" firstAttribute="top" secondItem="Tcp-oq-ITA" secondAttribute="bottom" constant="30" id="dDX-un-7tW"/>
                             <constraint firstItem="Tcp-oq-ITA" firstAttribute="top" secondItem="fVn-jq-KMi" secondAttribute="bottom" constant="30" id="jCF-Kt-y9q"/>
                             <constraint firstItem="fVn-jq-KMi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="kaE-Px-vUu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="fVn-jq-KMi" secondAttribute="top" constant="3" id="pH2-yC-Zzl"/>
+                            <constraint firstItem="xNm-Fl-1hf" firstAttribute="height" secondItem="Tcp-oq-ITA" secondAttribute="height" id="vDk-4h-YDw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xNm-Fl-1hf" secondAttribute="bottom" constant="20" id="ylm-Ut-TwN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1mi-Cb-fky"/>
