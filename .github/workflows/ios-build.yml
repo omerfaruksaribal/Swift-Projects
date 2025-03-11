@@ -1,0 +1,33 @@
+name: iOS Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode Version
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: Install dependencies (if using CocoaPods)
+        run: pod install
+        working-directory: Swift-Project/project-names/project-name
+        continue-on-error: true # Eğer pod yoksa hata vermeden geç
+
+      - name: Build with Xcode
+        run: |
+          xcodebuild -project Swift-Project/project-names/project-name/project-name.xcodeproj \
+                     -scheme project-name \
+                     -destination 'platform=iOS Simulator,name=iPhone 14' \
+                     build
+
