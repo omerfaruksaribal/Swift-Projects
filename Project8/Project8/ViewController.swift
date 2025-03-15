@@ -158,7 +158,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        loadLevel()
+        performSelector(inBackground: #selector(loadLevel), with: nil)
     }
 
     @objc func letterTapped(_ sender: UIButton) {
@@ -243,10 +243,11 @@ class ViewController: UIViewController {
         activatedButtons.removeAll()
     }
     
-    func loadLevel() {
+    @objc func loadLevel() {
         var clueString = ""
         var solutionsString = ""
         var letterBits = [String]()
+        var loadedSolutions = [String]()
 
         if let levelFileURL = Bundle.main.url(forResource: "level\(level)", withExtension: "txt") {
             if let levelContents = try? String(contentsOf: levelFileURL, encoding: .utf8) {
@@ -261,7 +262,7 @@ class ViewController: UIViewController {
                     clueString += "\(index + 1). \(clue)\n"
 
                     let solutionWord = answer.replacingOccurrences(of: "|", with: "")
-                    solutions.append(solutionWord)
+                    loadedSolutions.append(solutionWord)
 
                     solutionsString += "\(solutionWord.count) letters\n"
 
@@ -271,8 +272,18 @@ class ViewController: UIViewController {
             }
         }
 
+        performSelector(onMainThread: #selector(updateUI), with: [clueString, solutionsString, letterBits, loadedSolutions], waitUntilDone: false)
+    }
+    
+    @objc func updateUI(_ data: [Any]) {
+        guard let clueString = data[0] as? String,
+              let solutionsString = data[1] as? String,
+              let letterBits = data[2] as? [String],
+              let loadedSolutions = data[3] as? [String] else { return }
+
         cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
         answersLabel.text = solutionsString.trimmingCharacters(in: .whitespacesAndNewlines)
+        solutions = loadedSolutions
 
         letterButtons.shuffle()
 
@@ -282,5 +293,6 @@ class ViewController: UIViewController {
             }
         }
     }
+
 }
 
